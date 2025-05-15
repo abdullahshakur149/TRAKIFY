@@ -156,7 +156,7 @@ const Header = () => {
               Signup
             </button>
 
-            <button className="bg-opacity-20 hover:bg-opacity-40 rounded-md border border-white bg-black px-4 py-2.5 font-bold text-white">
+            <button className="bg-opacity-20 hover:bg-opacity-40 rounded-md border border-white bg-black px-4 py-2.5 text-white">
               Subscribe
             </button>
 
