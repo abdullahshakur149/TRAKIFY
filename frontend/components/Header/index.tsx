@@ -152,14 +152,17 @@ const Header = () => {
           </nav>
 
           <div className="mt-7 flex items-center gap-6 xl:mt-0">
-            <button className="rounded-md border border-white bg-[rgba(0,0,0,0.1)] px-4 py-2.5 text-black hover:bg-[rgba(0,0,0,0.2)]">
-              Signup
-            </button>
+            <Link href="/Onboarding/auth/signin">
+              <button className="rounded-md border border-white bg-[rgba(0,0,0,0.1)] px-4 py-2.5 text-black hover:bg-[rgba(0,0,0,0.2)]">
+                Signup
+              </button>
+            </Link>
 
-            <button className="bg-opacity-20 hover:bg-opacity-40 rounded-md border border-white bg-black px-4 py-2.5 text-white">
-              Subscribe
-            </button>
-
+            <Link href="/subscribe">
+              <button className="bg-opacity-20 hover:bg-opacity-40 rounded-md border border-white bg-black px-4 py-2.5 text-white">
+                Subscribe
+              </button>
+            </Link>
             <ThemeToggler />
           </div>
         </div>
