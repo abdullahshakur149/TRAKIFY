@@ -1,0 +1,31 @@
+@startuml usecaseDiagram
+
+left to right direction
+
+actor "Super Admin" as sAdmin
+actor "Admin" as admin
+actor "User" as user
+
+rectangle "TRAKIFY" {
+    usecase "Login" as login
+    usecase "Logout" as logout
+    usecase "Register" as register
+
+    usecase "View Tanents" as viewTanents
+}
+
+sAdmin --> login
+sAdmin --> logout
+sAdmin --> register
+sAdmin --> viewTanents
+
+admin -u-> login
+admin -u-> logout
+admin -u-> register
+
+user --> login
+user --> logout
+
+
+
+@enduml
