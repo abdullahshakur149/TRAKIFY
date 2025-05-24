@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Dropdown } from "@/components/ui/dropdown/Dropdown";
-import { UserCircleIcon } from "@/icons";
+import UserCircleIcon from "@/icons/user-circle.svg";
 
 export default function UserDropdown() {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,12 +11,12 @@ export default function UserDropdown() {
   };
 
   return (
-    <div className="relative">
+    <div className="relative h-10">
       <button
         onClick={toggleDropdown}
-        className="flex items-center space-x-2 rounded-full p-1 hover:bg-gray-100 dark:hover:bg-gray-800"
+        className="flex h-10 w-10 items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800"
       >
-        <UserCircleIcon className="h-8 w-8 text-gray-600 dark:text-gray-400" />
+        <UserCircleIcon className="h-6 w-6 text-gray-600 dark:text-gray-400" />
       </button>
 
       <Dropdown

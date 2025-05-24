@@ -18,18 +18,23 @@ export default function DashboardLayout({
       <body>
         <ThemeProvider>
           <SidebarProvider>
-            <div className="min-h-screen xl:flex">
-              {/* Sidebar and Backdrop */}
+            {/* Main layout container using flexbox for sidebar and content */}
+            <div className="flex min-h-screen bg-gray-100 dark:bg-gray-900">
+              {/* Sidebar - fixed height and width handled within AppSidebar */}
               <AppSidebar />
+
+              {/* Backdrop for smaller screens */}
               <Backdrop />
-              {/* Main Content Area */}
-              <div className="flex-1 transition-all duration-300 ease-in-out">
-                {/* Header */}
+
+              {/* Main Content Area - takes remaining width, is a flex column, and scrolls */}
+              <div className="flex flex-1 flex-col">
+                {/* Header - sticky at the top of this flex column */}
                 <AppHeader />
-                {/* Page Content */}
-                <div className="mx-auto max-w-(--breakpoint-2xl) p-4 md:p-6">
+
+                {/* Page Content - This area scrolls independently and fills the space below the header */}
+                <main className="flex-1 overflow-y-auto bg-white dark:bg-gray-800">
                   {children}
-                </div>
+                </main>
               </div>
             </div>
           </SidebarProvider>

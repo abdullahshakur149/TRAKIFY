@@ -1,3 +1,4 @@
+import React from "react";
 import PlusIcon from "./plus.svg";
 import CloseIcon from "./close.svg";
 import BoxIcon from "./box.svg";

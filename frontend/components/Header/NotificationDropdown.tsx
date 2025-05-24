@@ -14,10 +14,10 @@ export const NotificationDropdown = () => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative h-10">
       <button
         onClick={toggleDropdown}
-        className="relative rounded-full p-1 hover:bg-gray-100 dark:hover:bg-gray-800"
+        className="relative flex h-10 w-10 items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800"
       >
         <svg
           className="h-6 w-6 text-gray-600 dark:text-gray-300"
