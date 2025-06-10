@@ -56,7 +56,9 @@ const navItems: NavItem[] = [
     name: "Orders",
     subItems: [
       { name: "All Orders", path: "/dashboard/orders" },
-      { name: "Add Order", path: "/dashboard/orders/add" },
+      { name: "Add Orders", path: "/dashboard/courier-handover" },
+
+      { name: "Delivered Orders", path: "/dashboard/orders/delivered" },
       { name: "Returned Orders", path: "/dashboard/orders/returns" },
     ],
   },
