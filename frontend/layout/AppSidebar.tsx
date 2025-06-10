@@ -34,14 +34,14 @@ type NavItem = {
 const navItems: NavItem[] = [
   {
     icon: (
-      <GridIcon className="group-hover:text-brand-500 h-6 w-6 text-gray-500 transition-colors" />
+      <GridIcon className="group-hover:text-brand-500 h-5 w-5 text-gray-400 transition-all duration-200 group-hover:scale-110" />
     ),
     name: "Dashboard",
     path: "/dashboard",
   },
   {
     icon: (
-      <BuildingIcon className="group-hover:text-brand-500 h-6 w-6 text-gray-500 transition-colors" />
+      <BuildingIcon className="group-hover:text-brand-500 h-5 w-5 text-gray-400 transition-all duration-200 group-hover:scale-110" />
     ),
     name: "Organization",
     subItems: [
@@ -51,7 +51,7 @@ const navItems: NavItem[] = [
   },
   {
     icon: (
-      <ShoppingBagIcon className="group-hover:text-brand-500 h-6 w-6 text-gray-500 transition-colors" />
+      <ShoppingBagIcon className="group-hover:text-brand-500 h-5 w-5 text-gray-400 transition-all duration-200 group-hover:scale-110" />
     ),
     name: "Orders",
     subItems: [
@@ -62,7 +62,7 @@ const navItems: NavItem[] = [
   },
   {
     icon: (
-      <UsersIcon className="group-hover:text-brand-500 h-6 w-6 text-gray-500 transition-colors" />
+      <UsersIcon className="group-hover:text-brand-500 h-5 w-5 text-gray-400 transition-all duration-200 group-hover:scale-110" />
     ),
     name: "Employees",
     path: "/dashboard/employees",
@@ -70,7 +70,7 @@ const navItems: NavItem[] = [
   },
   {
     icon: (
-      <ChartIcon className="group-hover:text-brand-500 h-6 w-6 text-gray-500 transition-colors" />
+      <ChartIcon className="group-hover:text-brand-500 h-5 w-5 text-gray-400 transition-all duration-200 group-hover:scale-110" />
     ),
     name: "Analytics",
     path: "/dashboard/analytics",
@@ -80,7 +80,7 @@ const navItems: NavItem[] = [
 const othersItems: NavItem[] = [
   {
     icon: (
-      <CreditCardIcon className="group-hover:text-brand-500 h-6 w-6 text-gray-500 transition-colors" />
+      <CreditCardIcon className="group-hover:text-brand-500 h-5 w-5 text-gray-400 transition-all duration-200 group-hover:scale-110" />
     ),
     name: "Subscription",
     path: "/dashboard/subscription",
@@ -88,7 +88,7 @@ const othersItems: NavItem[] = [
   },
   {
     icon: (
-      <BoxCubeIcon className="group-hover:text-brand-500 h-6 w-6 text-gray-500 transition-colors" />
+      <BoxCubeIcon className="group-hover:text-brand-500 h-5 w-5 text-gray-400 transition-all duration-200 group-hover:scale-110" />
     ),
     name: "Admin Panel",
     subItems: [
@@ -103,7 +103,7 @@ const othersItems: NavItem[] = [
   },
   {
     icon: (
-      <SettingsIcon className="group-hover:text-brand-500 h-6 w-6 text-gray-500 transition-colors" />
+      <SettingsIcon className="group-hover:text-brand-500 h-5 w-5 text-gray-400 transition-all duration-200 group-hover:scale-110" />
     ),
     name: "Account",
     path: "/dashboard/account",
@@ -111,7 +111,7 @@ const othersItems: NavItem[] = [
 ];
 
 const AppSidebar: React.FC = () => {
-  const { isExpanded, isMobileOpen, isHovered, setIsHovered } = useSidebar();
+  const { isExpanded, isMobileOpen } = useSidebar();
   const pathname = usePathname();
   const [openSubmenu, setOpenSubmenu] = useState<{
     type: "main" | "others";
@@ -137,41 +137,46 @@ const AppSidebar: React.FC = () => {
     navItems: NavItem[],
     menuType: "main" | "others",
   ) => (
-    <ul className="flex flex-col gap-2">
+    <ul className="flex flex-col gap-1">
       {navItems.map((nav, index) => (
         <li key={nav.name}>
           {nav.subItems ? (
             <button
               onClick={() => handleSubmenuToggle(index, menuType)}
-              className={`group flex w-full items-center gap-3 rounded-xl px-4 py-3 text-gray-700 transition-all duration-300 hover:bg-gray-100/80 hover:shadow-sm dark:text-gray-200 dark:hover:bg-gray-800/80 ${
+              className={`group flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-gray-600 transition-all duration-200 hover:bg-gray-50/80 hover:shadow-sm dark:text-gray-300 dark:hover:bg-gray-800/80 ${
                 openSubmenu?.type === menuType && openSubmenu?.index === index
-                  ? "bg-gray-100/90 shadow-sm dark:bg-gray-800/90"
+                  ? "bg-gray-50/90 shadow-sm dark:bg-gray-800/90"
                   : ""
               }`}
             >
               <span
-                className={`transition-all duration-300 ${
+                className={`transition-all duration-200 ${
                   openSubmenu?.type === menuType && openSubmenu?.index === index
                     ? "text-brand-500 scale-110"
-                    : "group-hover:text-brand-500 text-gray-500 group-hover:scale-110"
+                    : ""
                 }`}
               >
                 {nav.icon}
               </span>
-              {(isExpanded || isHovered || isMobileOpen) && (
+              {(isExpanded || isMobileOpen) && (
                 <span
-                  className={`group-hover:text-brand-500 text-sm font-medium transition-all duration-300`}
+                  className={`text-sm font-medium transition-all duration-200 ${
+                    openSubmenu?.type === menuType &&
+                    openSubmenu?.index === index
+                      ? "text-brand-500"
+                      : "text-gray-600 dark:text-gray-300"
+                  }`}
                 >
                   {nav.name}
                 </span>
               )}
-              {(isExpanded || isHovered || isMobileOpen) && (
+              {(isExpanded || isMobileOpen) && (
                 <ChevronDownIcon
-                  className={`ml-auto h-4 w-4 transition-all duration-300 ${
+                  className={`ml-auto h-4 w-4 transition-all duration-200 ${
                     openSubmenu?.type === menuType &&
                     openSubmenu?.index === index
                       ? "text-brand-500 rotate-180"
-                      : "group-hover:text-brand-500 text-gray-400"
+                      : "text-gray-400"
                   }`}
                 />
               )}
@@ -180,37 +185,44 @@ const AppSidebar: React.FC = () => {
             nav.path && (
               <Link
                 href={nav.path}
-                className={`group flex w-full items-center gap-3 rounded-xl px-4 py-3 text-gray-700 transition-all duration-300 hover:bg-gray-100/80 hover:shadow-sm dark:text-gray-200 dark:hover:bg-gray-800/80 ${
+                className={`group flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-gray-600 transition-all duration-200 hover:bg-gray-50/80 hover:shadow-sm dark:text-gray-300 dark:hover:bg-gray-800/80 ${
                   isActive(nav.path)
-                    ? "bg-gray-100/90 shadow-sm dark:bg-gray-800/90"
+                    ? "bg-gray-50/90 shadow-sm dark:bg-gray-800/90"
                     : ""
                 }`}
               >
                 <span
-                  className={`transition-all duration-300 ${
-                    isActive(nav.path)
-                      ? "text-brand-500 scale-110"
-                      : "group-hover:text-brand-500 text-gray-500 group-hover:scale-110"
+                  className={`transition-all duration-200 ${
+                    isActive(nav.path) ? "text-brand-500 scale-110" : ""
                   }`}
                 >
                   {nav.icon}
                 </span>
-                {(isExpanded || isHovered || isMobileOpen) && (
+                {(isExpanded || isMobileOpen) && (
                   <span
-                    className={`group-hover:text-brand-500 text-sm font-medium transition-all duration-300`}
+                    className={`text-sm font-medium transition-all duration-200 ${
+                      isActive(nav.path)
+                        ? "text-brand-500"
+                        : "text-gray-600 dark:text-gray-300"
+                    }`}
                   >
                     {nav.name}
+                  </span>
+                )}
+                {(isExpanded || isMobileOpen) && nav.pro && (
+                  <span className="bg-brand-50 text-brand-600 dark:bg-brand-500/20 dark:text-brand-400 ml-auto rounded-full px-2 py-0.5 text-xs font-medium">
+                    PRO
                   </span>
                 )}
               </Link>
             )
           )}
-          {nav.subItems && (isExpanded || isHovered || isMobileOpen) && (
+          {nav.subItems && (isExpanded || isMobileOpen) && (
             <div
               ref={(el) => {
                 subMenuRefs.current[`${menuType}-${index}`] = el;
               }}
-              className="overflow-hidden transition-all duration-300"
+              className="overflow-hidden transition-all duration-200"
               style={{
                 height:
                   openSubmenu?.type === menuType && openSubmenu?.index === index
@@ -218,57 +230,38 @@ const AppSidebar: React.FC = () => {
                     : "0px",
               }}
             >
-              <ul className="relative mt-2 ml-9 space-y-2">
-                {/* Vertical line */}
+              <ul className="relative mt-1.5 ml-9 space-y-1">
                 <div className="absolute top-0 bottom-0 left-0 w-px bg-gray-200/50 dark:bg-gray-700/50" />
-
                 {nav.subItems.map((subItem, subIndex) => (
                   <li key={subItem.name} className="relative">
-                    {/* Horizontal line */}
                     <div className="absolute top-1/2 left-0 h-px w-3 -translate-y-1/2 bg-gray-200/50 dark:bg-gray-700/50" />
-
                     <Link
                       href={subItem.path}
-                      className={`flex items-center rounded-lg px-4 py-2.5 text-sm transition-all duration-300 ${
+                      className={`group flex w-full items-center gap-2 rounded-lg px-3 py-2 text-sm text-gray-600 transition-all duration-200 hover:bg-gray-50/80 hover:shadow-sm dark:text-gray-300 dark:hover:bg-gray-800/80 ${
                         isActive(subItem.path)
-                          ? "bg-brand-50/90 text-brand-500 dark:bg-brand-500/10 shadow-sm"
-                          : "hover:text-brand-500 text-gray-600 hover:bg-gray-50/80 hover:shadow-sm dark:text-gray-400 dark:hover:bg-gray-800/50"
+                          ? "bg-gray-50/90 shadow-sm dark:bg-gray-800/90"
+                          : ""
                       }`}
                     >
-                      {/* Dot indicator */}
-                      <div
-                        className={`absolute top-1/2 left-[-0.5px] h-1.5 w-1.5 -translate-y-1/2 rounded-full ${
+                      <span
+                        className={`text-sm font-medium transition-all duration-200 ${
                           isActive(subItem.path)
-                            ? "bg-brand-500"
-                            : "bg-gray-300 dark:bg-gray-600"
+                            ? "text-brand-500"
+                            : "text-gray-600 dark:text-gray-300"
                         }`}
-                      />
-
-                      <span className="ml-2">{subItem.name}</span>
-                      <span className="ml-auto flex items-center gap-2">
-                        {subItem.new && (
-                          <span
-                            className={`rounded-full px-2.5 py-1 text-xs font-medium transition-all duration-300 ${
-                              isActive(subItem.path)
-                                ? "bg-brand-100/90 text-brand-600 dark:bg-brand-500/20 dark:text-brand-400 shadow-sm"
-                                : "bg-gray-100/80 text-gray-600 shadow-sm dark:bg-gray-800/80 dark:text-gray-400"
-                            }`}
-                          >
-                            new
-                          </span>
-                        )}
-                        {subItem.pro && (
-                          <span
-                            className={`rounded-full px-2.5 py-1 text-xs font-medium transition-all duration-300 ${
-                              isActive(subItem.path)
-                                ? "bg-brand-100/90 text-brand-600 dark:bg-brand-500/20 dark:text-brand-400 shadow-sm"
-                                : "bg-gray-100/80 text-gray-600 shadow-sm dark:bg-gray-800/80 dark:text-gray-400"
-                            }`}
-                          >
-                            pro
-                          </span>
-                        )}
+                      >
+                        {subItem.name}
                       </span>
+                      {subItem.pro && (
+                        <span className="bg-brand-50 text-brand-600 dark:bg-brand-500/20 dark:text-brand-400 ml-auto rounded-full px-2 py-0.5 text-xs font-medium">
+                          PRO
+                        </span>
+                      )}
+                      {subItem.new && (
+                        <span className="ml-auto rounded-full bg-green-50 px-2 py-0.5 text-xs font-medium text-green-600 dark:bg-green-500/20 dark:text-green-400">
+                          NEW
+                        </span>
+                      )}
                     </Link>
                   </li>
                 ))}
@@ -286,57 +279,40 @@ const AppSidebar: React.FC = () => {
         setSubMenuHeight((prev) => ({ ...prev, [key]: el.scrollHeight }));
       }
     });
-  }, [isExpanded, isHovered, isMobileOpen]);
+  }, [isExpanded, isMobileOpen]);
 
   return (
     <aside
-      className={`fixed top-0 left-0 z-30 flex min-h-screen flex-col overflow-y-hidden border-r border-gray-200 bg-white shadow-xl duration-300 ease-linear lg:static lg:translate-x-0 lg:shadow-none dark:border-gray-800 dark:bg-gray-900 ${
+      className={`h-full w-64 border-r border-gray-200 bg-white shadow-sm transition-all duration-200 dark:border-gray-800 dark:bg-gray-900 ${
         isMobileOpen ? "translate-x-0" : "-translate-x-full"
-      } ${isExpanded || isHovered || isMobileOpen ? "lg:w-70" : "lg:w-20"} `}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      } md:translate-x-0`}
     >
-      <div className="flex items-center justify-center gap-2 border-b border-gray-200 px-4 py-3 lg:px-6 dark:border-gray-800">
-        {isExpanded || isHovered || isMobileOpen ? (
-          <Link className="flex-shrink-0" href="/">
+      <div className="flex h-full flex-col">
+        {/* Logo */}
+        <div className="flex h-16 items-center border-b border-gray-200 px-4 dark:border-gray-800">
+          <Link href="/dashboard" className="flex items-center">
             <Image
-              width={154}
-              height={32}
-              className="dark:hidden"
               src="/images/logo/logo.png"
               alt="Logo"
-            />
-            <Image
-              width={154}
-              height={32}
-              className="hidden dark:block"
-              src="/images/logo/logo-dark.svg"
-              alt="Logo"
-            />
-          </Link>
-        ) : (
-          <Link className="flex-shrink-0" href="/">
-            <Image
               width={32}
               height={32}
-              src="/images/logo/favicon.svg"
-              alt="Logo"
+              className="h-8 w-8"
             />
           </Link>
-        )}
-      </div>
-      <div className="no-scrollbar flex flex-col overflow-y-auto p-4 duration-300 ease-linear md:p-6">
-        <nav className="mt-5 px-4 py-4 lg:mt-9 lg:px-6">
+        </div>
+
+        {/* Navigation */}
+        <nav className="flex-1 space-y-6 px-3 py-4">
           <div>
-            <h3 className="mb-4 ml-4 text-sm font-semibold text-gray-400">
-              MENU
+            <h3 className="mb-2 px-3 text-xs font-semibold tracking-wider text-gray-500 uppercase dark:text-gray-400">
+              Menu
             </h3>
             {renderMenuItems(navItems, "main")}
           </div>
 
-          <div className="mt-8">
-            <h3 className="mb-4 ml-4 text-sm font-semibold text-gray-400">
-              OTHERS
+          <div>
+            <h3 className="mb-2 px-3 text-xs font-semibold tracking-wider text-gray-500 uppercase dark:text-gray-400">
+              Others
             </h3>
             {renderMenuItems(othersItems, "others")}
           </div>

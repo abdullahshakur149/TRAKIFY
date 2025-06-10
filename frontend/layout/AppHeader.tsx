@@ -82,14 +82,14 @@ const AppHeader: React.FC = () => {
             )}
           </button>
 
-          <div className="hidden lg:block">
+          <div className="hidden flex-grow lg:block lg:max-w-sm">
             <form className="relative">
               <div className="relative">
                 <input
                   ref={inputRef}
                   type="text"
                   placeholder="Search..."
-                  className="focus:border-brand-500 focus:ring-brand-500 w-[300px] rounded-lg border border-gray-200 bg-gray-50 py-2 pr-12 pl-4 text-sm text-gray-700 placeholder:text-gray-500 focus:ring-1 focus:outline-none dark:border-gray-800 dark:bg-gray-900 dark:text-gray-400 dark:placeholder:text-gray-400"
+                  className="focus:border-brand-500 focus:ring-brand-500 w-full rounded-lg border border-gray-200 bg-gray-50 py-2 pr-12 pl-4 text-sm text-gray-700 placeholder:text-gray-500 focus:ring-1 focus:outline-none dark:border-gray-800 dark:bg-gray-900 dark:text-gray-400 dark:placeholder:text-gray-400"
                 />
                 <button className="absolute top-1/2 right-2.5 inline-flex -translate-y-1/2 items-center gap-0.5 rounded-lg border border-gray-200 bg-gray-50 px-[7px] py-[4.5px] text-xs -tracking-[0.2px] text-gray-500 dark:border-gray-800 dark:bg-white/[0.03] dark:text-gray-400">
                   <span> ⌘ </span>
